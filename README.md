@@ -42,7 +42,21 @@ After the approval only the changes are pushed to main branch.
 
 After adding rules, how to make changes?
 
-Create another branch from main branch -> do changes -> cretae pull request (PR)-> get the approval -> merge changes. This is the procedure.
+Create another branch from main branch -> do changes -> create pull request (PR)-> get the approval -> merge changes. This is the procedure.
 
+After cloning the url , we can see git log to get the commmit IDs
+
+```
+$ git log
+commit 811624dfd09d5f338f9b125b54e891d8ecbb9d40 (HEAD -> main, origin/main, origin/HEAD)
+Author: Suresh Makkena <58598378+makkenagithub@users.noreply.github.com>
+Date:   Fri May 2 20:02:31 2025 +0530
+
+    Create test.txt
+```
+To create another branch from main branch:
+```
+git checkout -b new_test
+```
 
 

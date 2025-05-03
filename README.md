@@ -134,5 +134,91 @@ git add . ; git commit -m "resolve conflict changes for issue/feature" ; git pus
 This is how merge conflicts can be resolved and then perosn2 can commit his changes to main branch from git console.
 
 
+### Branching strategy:
+How to develop and how to release applications to production?
+
+Git flow model: (old branchin strategy , widely used in monolythic apps). Its used no also in versioning applications which supports multiple versions at a time. Like whatsapp, android etc. Big application use this flow.
+
+![image](https://github.com/user-attachments/assets/78f55074-f5b2-4f1f-a7f4-5ded6460cf3a)
+
+Git flow usually have 2 long lived branches for life time (long lived means, these branches do not be deleted)
+1. main
+2. development
+
+We also hve short lived branches in git flow
+1. feature branch
+2. release branch
+3. hot fix branch
+
+Every branch has source and destination. Source for development branch is main.
+
+Similarly source for featue1 (say video call) is development branch. And destination for featue 1 is development. So feature branched comes from development and merges to development
+
+Hotfix branches come from main (master) and merge to main and development branches.
+
+Release branch come from development and merged to main and development.
+
+Once the feature is developed and merged to development brach, then a release branch is created. And then testing happens (in UAT, QA etc), issues are fixed and then merged to development and main.
+
+Hotfix means - emergencey change. 
+
+Feature Branching model: 
+
+For web applications / micro services git flow model is very heavy. So we use github flow or feature branching strategy.
+
+feature branching model has 2 branches
+1. main/master
+2. feature
+
+![image](https://github.com/user-attachments/assets/8cee856a-f37e-4185-8624-56adee164daf)
+
+Usually one feature is developed by one person.
+
+CICD process is run on feature branch. Build, scan, deploy in dev, functionality test -> this process ic called shift left process.
+
+Shift left is important strategy in feature branching model. Shift left means, it includes scans, testing in early stages of development instead of after development.
+
+Then the feature is deployed to main branch. Then this feature can be deployed to different environsments SIT, UAT, QA, pre-prod etc, i.e non-prod
+
+Fianlly its deployed to prod through CR process.
+
+git reset vs git revert: These are to undo the changes.
+
+We have 3 areas in git
+1. workspace area - this is where we make changes to files/code. (eg: VS code)
+2. stageing area - when we run (git add . ) command files/changes added to staging area
+3. commit area - changes are commited to git from staging area. (git commit -m "messages")
+
+git reset: is used before we push to remote branches (non-main branches) . 3 options present in git reset
+
+1. soft -  Changes will removed in commit area , but changes still exists in staging area.
+2. mixed - (default option) - Changes will be removed in staging are, commit area. But it keeps changes in workspace.
+3. hard - changes will removed from commit, staging and work space areas.
+Assume we have 3 commits given with command git add .; git commit -m "". Last commit is called HEAD
+
+To see git log with commits IDs in one line
+```
+git log --oneline
+```
+```
+git reset --soft HEAD~1            (HEAD-1 means - removes the last commit)
+git reset HEAD~1
+git reset --hard HEAD~1
+# To removes changes till some commit id
+git reset --hard <commit-id>
+```
+So git reset removes the history and changes commit ID. So its not recommended to use in remote branches. We may use git reset in local branches. If we do reset in remote branches, then other users will be effected, if they are using it.
+
+
+git revert: revert will not remove old commit IDs, it will add extra commit IDs. We get conflicts with revert. We need to correct the wrong commits. Commit history is not changed.
+```
+git revert HEAD~1
+```
+
+
+
+
+
+
 
 

@@ -110,8 +110,28 @@ Rebase is prefered, if a branch is developed by single person. If we do not want
 
 For eg, we get app development and made lot of changes sequentially to develop the app. Then if we want all history of changes, the merge commit is prefered, else rebase is prefered.
 
+Merge conflicts:
 
+Conflict comes when git finds different code in same line. Then git will give conflict. When 2 people are woking on same issue / feature, If person1 commited his changes to main branch, then later when person2 tries to commits his chnages to main branch , then merge conflict will come.
 
+Resolving conflicts: both perosns need to discuss the changes and resolve conflicts. 
+
+Person2 needs to go to main branch and get latest code and merge the new changes 
+```
+git checkout main
+git pull
+git checkout person2
+git merge main
+```
+After merging the latest changes by person2, the if you open the file in vs code or notepadd++, the git shows changes by <<< and >>>> symbols with HEAD and main.
+
+HEAD means the peroson who is working i.e. person2. main means existing change. Then discuss and decide by person1 and person2, then make the changes in the above opened file finally (i.e. removing <<< >>> symbols, HEAD, main etc and keep finalised content).
+
+Then
+```
+git add . ; git commit -m "resolve conflict changes for issue/feature" ; git push origin person2
+```
+This is how merge conflicts can be resolved and then perosn2 can commit his changes to main branch from git console.
 
 
 

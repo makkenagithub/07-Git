@@ -19,3 +19,5 @@ Fix for issue 3
 8
 9
  
+fix for issue 4
+10

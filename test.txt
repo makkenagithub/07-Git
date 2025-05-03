@@ -4,3 +4,8 @@ Added some data
 1
 2
 3
+
+Fix for issue #2
+4
+5
+6

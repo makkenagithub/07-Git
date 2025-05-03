@@ -96,15 +96,20 @@ Merge commit:
 1. Every merge commit has 2 parent commits.
 2. Merging preserves (maintains) all history. at any point we can track all history.
 3. Merge commit is an extra commit created by git.
+4. creates non-linear history
 
 Rebase commit: 
 1. rebase will not create extra commit (as like merge commit).
 2. there is no history preserved in rebase commit.
 3. commit IDs will be changed in rebase.
+4. creates linear history
 
 Merge is prefered if a branch is developed by multple people. To know who did what merge commit is prefered. To know history merge commit is prefered
 
-Rebase is prefered, if a branch is developed by single person. If we do not wnat history, go for rebase. 
+Rebase is prefered, if a branch is developed by single person. If we do not want history, go for rebase. 
+
+For eg, we get app development and made lot of changes sequentially to develop the app. Then if we want all history of changes, the merge commit is prefered, else rebase is prefered.
+
 
 
 

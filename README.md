@@ -56,7 +56,58 @@ Date:   Fri May 2 20:02:31 2025 +0530
 ```
 To create another branch from main branch:
 ```
-git checkout -b new_test
+git checkout -b test-branch
+$ git checkout -b test-branch
+Switched to a new branch 'test-branch'
+
+Rohan@LAPTOP-V3QJRG9P MINGW64 ~/OneDrive/desktop/suresh/devopsPractice/07-Git (test-branch)
+$ ls -lrt
+total 5
+-rw-r--r-- 1 Rohan 197121    2 May  2 20:02 test.txt
+-rw-r--r-- 1 Rohan 197121 2112 May  2 20:07 README.md
+
+Rohan@LAPTOP-V3QJRG9P MINGW64 ~/OneDrive/desktop/suresh/devopsPractice/07-Git (test-branch)
+$
+
 ```
+In the about we checkout the code to new branch called test_branch. Then make some changes to the code in test.txt file. Then push the changes to test-branch as below
+
+Then
+```
+git add . ; git commint -m "chnaged test.txt" ; git push origin test-branch
+```
+
+Then in github console, it appears that test-branch has recent pushes. Click on compare & pull request. Then it goes for approval as created in pull request rule setting , after approval, then click on merge pull request, so that changes go to main branch.
+
+Here git creates merge commmit, as below
+
+![image](https://github.com/user-attachments/assets/f4d11dda-fbee-4b4d-997e-0068efac0515)
+
+
+Then to go to main branch in git bash
+```
+git checkout main
+```
+Every merge commit has 2 parent commits. To see the parent Ids
+```
+git cat-file <merge-commit-id> -p
+```
+Merge commit:
+1. Every merge commit has 2 parent commits.
+2. Merging preserves (maintains) all history. at any point we can track all history.
+3. Merge commit is an extra commit created by git.
+
+Rebase commit: 
+1. rebase will not create extra commit (as like merge commit).
+2. there is no history preserved in rebase commit.
+3. commit IDs will be changed in rebase.
+
+Merge is prefered if a branch is developed by multple people. To know who did what merge commit is prefered. To know history merge commit is prefered
+
+Rebase is prefered, if a branch is developed by single person. If we do not wnat history, go for rebase. 
+
+
+
+
 
 

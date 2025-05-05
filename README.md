@@ -215,6 +215,12 @@ git revert: revert will not remove old commit IDs, it will add extra commit IDs.
 git revert HEAD~1
 ```
 
+Git Cherry pick: 
+
+When we find something useful in another branch, we can pick those commits instead of compeletey merge or rebase.
+
+when we use git pull , it pulls latest from the branch we are in , we can use "gir pull origin main" to be specific to pull from main branch.
+
 
 
 

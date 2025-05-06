@@ -217,9 +217,34 @@ git revert HEAD~1
 
 Git Cherry pick: 
 
-When we find something useful in another branch, we can pick those commits instead of compeletey merge or rebase.
+When we find something useful in another branch, we can pick those commits instead of compeletey merge or rebase with that branch.
 
 when we use git pull , it pulls latest from the branch we are in , we can use "gir pull origin main" to be specific to pull from main branch.
+
+Assume 2 users working on same file. User1 made some changes to file in his own branch and committed multiple times then pushed to his branch. Then finally pushed to main branch by approvals.
+
+Now user2 also made changes to the same file in his branch and committed multiple times and pushed to his branch. Then tried to push to main branch from approvasls, and he got conflicts. Then user2 sees what changes made in the main branch (git log main), and decided he wants to cherry pick a specific commit by using below command,
+```
+git cherry-pick <commit-id>
+```
+Now when he opens his file editor, it shows the newly cherry picked changes and his changes, then he modifies the changes accordingly,and then commits to his own branch now. After that tried to push to main branch, further he gets conflicts, then user2 solves the conflicts with
+```
+git merge main
+```
+After solving the conflicts, then he commits to his own branch then push to his branch. Then after review and approaval, user2 changes goes to main branch.
+
+The above things shown cherrypick from main branch. Cherry pick can be done from other user's branches also (user2 can cherry-pick from user1 commits also).
+```
+git checkout user1
+git pull
+git checkout user2
+git log user1
+git cherry-pick <commit-id-of-user1>        # this may create conflicts, resolve and then commit and push.
+```
+
+Git restore:
+
+
 
 
 

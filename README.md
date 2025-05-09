@@ -244,10 +244,36 @@ git cherry-pick <commit-id-of-user1>        # this may create conflicts, resolve
 
 Git restore:
 
+Create a new branch for testing git restore. Make some changes in a file and commit to local branch. (means, $git add . ; git commit -m "message" )
 
+Now make some changes and add changes to only staging area by using $git add .
 
+Then check $git status   , it shows restore command as "$ git restore --staged <filename>"  to unstage the file. Now the cahnges are in staging and workspace area.
 
+So before comminting these changes, if we want to correct, then we can unstage by using 
+```
+git restore --staged <filename>
+git status
+```
+Now the changes are removed in staging area and changes exist in workspace.
 
+We can restore to specifc commit also
+```
+git log --oneline
+git restore --source=<commit-id> <file-name>
+git log --oneline
+```
+It brings the changes of the above commit-id to workspace. But it wont delete the commit-ids. So restore command restores the file to particular commit-id, but it wont delete commit-ids
+
+```
+git pull origin main
+git checkout <branch name>
+Then do some changes in files. Now if we want to discard the changes we made and restore the workspace then,
+git restore <file name>
+```
+So to discard uncommitted local changes in a file, we can use "git restore <file name>"
+
+So in restore we have option to choose particular file. But in reset and revert, we do not have option to choose particular file, it effects on entire workspace.
 
 
 
